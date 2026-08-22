@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(173, 165, 155);
+    margin: 0 ;
+    padding: 2rem;
+    font-family: "Pinyon Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+div{
+    border: 2px solid hwb(320 22% 77%);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 25%;
+    background-color: rgb(100, 97, 92);
+     box-shadow: 5px 5px 10px gray;
+}
+img{
+    width: 80%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    margin: auto;
+}
+h1{
+    font-size: 3rem;
+    text-align: center;
+}
+li,p{
+    font-size: 1.5rem;
+}
+button{
+    width: 60%;
+    padding: 1rem;
+    margin: auto;
+    font-weight: 600;
+    background-color: rgb(122, 51, 107);
+    border: none;
+    border-radius: 8px;
+    display: block;
+}
+button:hover{
+     background-color: rgb(123, 104, 119);
+
+}
