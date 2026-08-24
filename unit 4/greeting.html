@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family: sans-serif;
+          max-width: 400px;
+          margin: 60px auto;
+          padding: 0 16px;
+        }
+        input, button {
+          padding: 8px;
+          font-size: 15px;
+        }
+        #ogn {
+          margin-top: 16px;
+          font-size: 18px;
+        }
+      </style>
+</head>
+<body>
+    <form>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="enter your username">
+        <button id="vtn" type="button">submit </button>
+    </form>
+    <p id="ogn"></p>
+    <script>
+        const username=document.getElementById("username")
+        const sbutton=document.getElementById("vtn")
+        const message=document.getElementById("ogn")
+        function greeting(){
+            const name=username.value.trim()
+                if (name===""){
+                    message.textContent= `Please enter your name!`;
+                    return
+                }
+            
+            message.textContent= `Hello, ${name}!`
+            username.value=" "
+        }
+        sbutton.addEventListener("click",greeting)
+    </script>
+</body>
+</html>

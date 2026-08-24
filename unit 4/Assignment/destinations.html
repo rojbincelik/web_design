@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinasyonlar — Traveler Explorer</title>
+  <meta name="description" content="Otuz altı destinasyonu iklim ve kıtaya göre filtrele, beğendiklerini listene ekle.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="page">
+
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+
+      <a class="brand" href="index.html">
+        <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1"/>
+          <path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/>
+        </svg>
+        <span class="brand__name">Traveler <em>Explorer</em></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-toggle__text">Menü</span>
+      </button>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Ana menü">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Ana sayfa</a></li>
+          <li><a href="destinations.html" aria-current="page">Destinasyonlar</a></li>
+          <li><a href="contact.html">Rota planla</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ SAYFA BAŞLIĞI ============ -->
+    <section class="page-head" aria-labelledby="sayfa-baslik">
+      <div class="page-head__inner">
+        <p class="stamp stamp--light">
+          <span class="stamp__cross" aria-hidden="true">+</span>
+          36&nbsp;KAYIT
+        </p>
+        <h1 class="page-head__title" id="sayfa-baslik">Destinasyonlar</h1>
+        <p class="page-head__text">
+          Kıtaya ve iklime göre daralt. Beğendiklerini listene ekle;
+          liste tarayıcında kalır, hesap açman gerekmez.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="liste-baslik">
+      <h2 class="visually-hidden" id="liste-baslik">Destinasyon listesi</h2>
+
+      <!--
+        FİLTRE ÇUBUĞU
+        hidden ile başlıyor. JavaScript yüklenirse açılıyor.
+        Sebep: filtreler JS olmadan hiçbir şey yapmaz; çalışmayan
+        bir arayüz göstermektense hiç göstermemek daha dürüst.
+        Kartlar zaten HTML'de duruyor, yani JS olmadan da liste okunur.
+      -->
+      <div class="filters" id="filters" hidden>
+        <div class="filters__group" role="group" aria-labelledby="filtre-kita">
+          <p class="filters__label" id="filtre-kita">Kıta</p>
+          <div class="filters__options">
+            <button class="chip" type="button" data-filter="region" data-value="all" aria-pressed="true">Tümü</button>
+            <button class="chip" type="button" data-filter="region" data-value="avrupa" aria-pressed="false">Avrupa</button>
+            <button class="chip" type="button" data-filter="region" data-value="asya" aria-pressed="false">Asya</button>
+            <button class="chip" type="button" data-filter="region" data-value="afrika" aria-pressed="false">Afrika</button>
+            <button class="chip" type="button" data-filter="region" data-value="amerika" aria-pressed="false">Amerika</button>
+          </div>
+        </div>
+
+        <div class="filters__group" role="group" aria-labelledby="filtre-iklim">
+          <p class="filters__label" id="filtre-iklim">İklim</p>
+          <div class="filters__options">
+            <button class="chip" type="button" data-filter="climate" data-value="all" aria-pressed="true">Tümü</button>
+            <button class="chip" type="button" data-filter="climate" data-value="ilıman" aria-pressed="false">Ilıman</button>
+            <button class="chip" type="button" data-filter="climate" data-value="akdeniz" aria-pressed="false">Akdeniz</button>
+            <button class="chip" type="button" data-filter="climate" data-value="kurak" aria-pressed="false">Kurak</button>
+            <button class="chip" type="button" data-filter="climate" data-value="tropik" aria-pressed="false">Tropik</button>
+            <button class="chip" type="button" data-filter="climate" data-value="subarktik" aria-pressed="false">Subarktik</button>
+          </div>
+        </div>
+      </div>
+
+      <!--
+        Sonuç sayacı. aria-live="polite" sayesinde filtre
+        değiştiğinde ekran okuyucu kaç sonuç kaldığını duyurur.
+        Görme engelli kullanıcı aksi halde listenin değiştiğini
+        fark edemez.
+      -->
+      <p class="results-count" id="results-count" role="status" aria-live="polite"></p>
+
+      <div class="destination-grid" id="destination-grid">
+
+        <article class="destination-card" data-region="asya" data-climate="ilıman">
+          <img class="destination-card__image" src="images/kyoto-800.jpg"
+               srcset="images/kyoto-400.jpg 400w, images/kyoto-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Kyoto'da bir tapınak bahçesinde çiçek açmış kiraz ağaçları"
+               loading="lazy" width="800" height="600">
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>35.0116&nbsp;N&nbsp;/&nbsp;135.7681&nbsp;E</p>
+            <h3 class="destination-card__title">Kyoto</h3>
+            <p class="destination-card__region">Japonya · Ilıman</p>
+            <p class="destination-card__text">
+              Tapınaklar, çay evleri ve bambu ormanları arasında yürünen,
+              acelesi olmayan bir şehir.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="kyoto">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card" data-region="avrupa" data-climate="akdeniz">
+          <img class="destination-card__image" src="images/lisbon-800.jpg"
+               srcset="images/lisbon-400.jpg 400w, images/lisbon-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Lizbon'da sarı bir tramvayın çıktığı dik ve dar bir sokak"
+               loading="lazy" width="800" height="600">
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>38.7223&nbsp;N&nbsp;/&nbsp;9.1393&nbsp;W</p>
+            <h3 class="destination-card__title">Lizbon</h3>
+            <p class="destination-card__region">Portekiz · Akdeniz</p>
+            <p class="destination-card__text">
+              Yedi tepe, çini kaplı cepheler ve nehre bakan her köşede
+              bir bakış açısı.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="lisbon">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card" data-region="avrupa" data-climate="subarktik">
+          <img class="destination-card__image" src="images/reykjavik-800.jpg"
+               srcset="images/reykjavik-400.jpg 400w, images/reykjavik-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Reykjavík yakınlarında karla kaplı bir ovanın üzerinde kuzey ışıkları"
+               loading="lazy" width="800" height="600">
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>64.1466&nbsp;N&nbsp;/&nbsp;21.9426&nbsp;W</p>
+            <h3 class="destination-card__title">Reykjavík</h3>
+            <p class="destination-card__region">İzlanda · Subarktik</p>
+            <p class="destination-card__text">
+              Şehirden kırk dakika uzaklaşınca jeotermal havuzlar, kara
+              kumlu sahiller ve karanlık gökyüzü.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="reykjavik">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card" data-region="afrika" data-climate="kurak">
+          <img class="destination-card__image" src="images/marrakech-800.jpg"
+               srcset="images/marrakech-400.jpg 400w, images/marrakech-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Marrakeş'te bir çarşıda üst üste dizilmiş renkli baharat çuvalları"
+               loading="lazy" width="800" height="600">
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>31.6295&nbsp;N&nbsp;/&nbsp;7.9811&nbsp;W</p>
+            <h3 class="destination-card__title">Marrakeş</h3>
+            <p class="destination-card__region">Fas · Kurak</p>
+            <p class="destination-card__text">
+              Medinanın içinde kaybolmak plana dahil. Atlas Dağları
+              iki saatlik mesafede.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="marrakech">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card" data-region="amerika" data-climate="ilıman">
+          <img class="destination-card__image" src="images/oaxaca-800.jpg"
+               srcset="images/oaxaca-400.jpg 400w, images/oaxaca-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Oaxaca'da pastel renkli sömürge dönemi binalarının sıralandığı bir sokak"
+               loading="lazy" width="800" height="600">
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>17.0732&nbsp;N&nbsp;/&nbsp;96.7266&nbsp;W</p>
+            <h3 class="destination-card__title">Oaxaca</h3>
+            <p class="destination-card__region">Meksika · Ilıman</p>
+            <p class="destination-card__text">
+              Mole çeşitlerini saymakla bitiremezsin. Çevresinde
+              dokuma köyleri ve arkeolojik alanlar var.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="oaxaca">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card" data-region="asya" data-climate="tropik">
+          <img class="destination-card__image" src="images/hanoi-800.jpg"
+               srcset="images/hanoi-400.jpg 400w, images/hanoi-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Hanoi'de eski şehirde alçak binaların arasından geçen kalabalık bir cadde"
+               loading="lazy" width="800" height="600">
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>21.0278&nbsp;N&nbsp;/&nbsp;105.8342&nbsp;E</p>
+            <h3 class="destination-card__title">Hanoi</h3>
+            <p class="destination-card__region">Vietnam · Tropik</p>
+            <p class="destination-card__text">
+              Sabah altıda sokak kahvaltısı, akşamüstü göl kenarında
+              yürüyüş. Halong Körfezi bir gecelik mesafede.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="hanoi">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Filtre hiçbir sonuç döndürmediğinde JS bunu gösterecek -->
+      <p class="empty-state" id="empty-state" hidden>
+        Bu kombinasyonda kayıt yok. Filtrelerden birini gevşetmeyi dene.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__brand">Traveler <em>Explorer</em></p>
+      <nav aria-label="Alt menü">
+        <ul class="site-footer__list">
+          <li><a href="index.html">Ana sayfa</a></li>
+          <li><a href="destinations.html">Destinasyonlar</a></li>
+          <li><a href="contact.html">Rota planla</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__note">
+        Bu site bir üniversite ödevi kapsamında öğrenme amaçlı hazırlanmıştır.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

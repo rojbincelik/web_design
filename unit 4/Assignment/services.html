@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    
+    <header>
+        <nav class="site-nav" aria-label="Main">
+        <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+    </header>
+    
+    <main id="main">
+        <h1>…</h1>
+        <section aria-labelledby="services-heading">
+        <h2 id="services-heading">…</h2>
+        </section>
+    </main>
+    <article class="destination-card">
+        <img
+          class="destination-card__image"
+          src="images/kyoto-800.jpg"
+          srcset="images/kyoto-400.jpg 400w,
+                  images/kyoto-800.jpg 800w,
+                  images/kyoto-1200.jpg 1200w"
+          sizes="(min-width: 60rem) 30vw,
+                 (min-width: 40rem) 45vw,
+                 100vw"
+          alt="Kyoto'da bir tapınağın önünde çiçek açmış kiraz ağaçları"
+          loading="lazy"
+          width="800" height="600">
+      
+        <div class="destination-card__body">
+          <p class="destination-card__region">Asya</p>
+          <h3 class="destination-card__title">Kyoto, Japonya</h3>
+          <p class="destination-card__text">
+            Tapınaklar, çay evleri ve bambu ormanları arasında yavaş bir şehir.
+          </p>
+          <button class="favourite-btn" type="button"
+                  aria-pressed="false"
+                  data-id="kyoto">
+            <span class="favourite-btn__label">Favorilere ekle</span>
+          </button>
+        </div>
+      </article>
+    <footer>…</footer>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

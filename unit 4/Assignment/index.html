@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traveler Explorer — Rotanı kendin çiz</title>
+  <meta name="description" content="Dünyanın dört bir yanından destinasyonları keşfet, favorilerini kaydet ve kendi rotanı planla.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="page">
+
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+
+      <a class="brand" href="index.html">
+        <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1"/>
+          <path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/>
+        </svg>
+        <span class="brand__name">Traveler <em>Explorer</em></span>
+      </a>
+
+      <button class="nav-toggle" type="button"
+              aria-expanded="false"
+              aria-controls="primary-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-toggle__text">Menü</span>
+      </button>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Ana menü">
+        <ul class="site-nav__list">
+          <li><a href="index.html" aria-current="page">Ana sayfa</a></li>
+          <li><a href="destinations.html">Destinasyonlar</a></li>
+          <li><a href="contact.html">Rota planla</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero__image"
+           src="images/hero-1200.jpg"
+           srcset="images/hero-600.jpg 600w,
+                   images/hero-1200.jpg 1200w,
+                   images/hero-1800.jpg 1800w"
+           sizes="100vw"
+           alt=""
+           width="1800" height="1200"
+           fetchpriority="high">
+
+      <div class="hero__content">
+        <p class="stamp stamp--light">
+          <span class="stamp__cross" aria-hidden="true">+</span>
+          41.0082&nbsp;N&nbsp;/&nbsp;28.9784&nbsp;E
+        </p>
+
+        <h1 class="hero__title" id="hero-title">
+          Rotanı başkası çizmesin
+        </h1>
+
+        <p class="hero__text">
+          Otuz altı destinasyonu iklimine, bütçesine ve gitmek istediğin
+          mevsime göre incele. Beğendiklerini kaydet, kendi listeni kur.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="destinations.html">Destinasyonları aç</a>
+          <a class="btn btn--ghost" href="#nasil-calisir">Nasıl çalışıyor?</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ÖNE ÇIKANLAR ============ -->
+    <section class="section" aria-labelledby="one-cikan-baslik">
+      <div class="section__head">
+        <h2 class="section__title" id="one-cikan-baslik">Bu ay öne çıkanlar</h2>
+        <p class="section__lead">
+          Sezonu yeni açılmış, kalabalığın henüz gelmediği üç yer.
+        </p>
+      </div>
+
+      <div class="destination-grid">
+
+        <article class="destination-card">
+          <img class="destination-card__image"
+               src="images/kyoto-800.jpg"
+               srcset="images/kyoto-400.jpg 400w, images/kyoto-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Kyoto'da bir tapınak bahçesinde çiçek açmış kiraz ağaçları"
+               loading="lazy" width="800" height="600">
+
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>35.0116&nbsp;N&nbsp;/&nbsp;135.7681&nbsp;E</p>
+            <h3 class="destination-card__title">Kyoto</h3>
+            <p class="destination-card__region">Japonya · Ilıman</p>
+            <p class="destination-card__text">
+              Tapınaklar, çay evleri ve bambu ormanları arasında yürünen,
+              acelesi olmayan bir şehir.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="kyoto">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img class="destination-card__image"
+               src="images/lisbon-800.jpg"
+               srcset="images/lisbon-400.jpg 400w, images/lisbon-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Lizbon'da sarı bir tramvayın çıktığı dik ve dar bir sokak"
+               loading="lazy" width="800" height="600">
+
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>38.7223&nbsp;N&nbsp;/&nbsp;9.1393&nbsp;W</p>
+            <h3 class="destination-card__title">Lizbon</h3>
+            <p class="destination-card__region">Portekiz · Akdeniz</p>
+            <p class="destination-card__text">
+              Yedi tepe, çini kaplı cepheler ve nehre bakan her köşede
+              bir bakış açısı.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="lisbon">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img class="destination-card__image"
+               src="images/reykjavik-800.jpg"
+               srcset="images/reykjavik-400.jpg 400w, images/reykjavik-800.jpg 800w"
+               sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+               alt="Reykjavík yakınlarında karla kaplı bir ovanın üzerinde kuzey ışıkları"
+               loading="lazy" width="800" height="600">
+
+          <div class="destination-card__body">
+            <p class="stamp"><span class="stamp__cross" aria-hidden="true">+</span>64.1466&nbsp;N&nbsp;/&nbsp;21.9426&nbsp;W</p>
+            <h3 class="destination-card__title">Reykjavík</h3>
+            <p class="destination-card__region">İzlanda · Subarktik</p>
+            <p class="destination-card__text">
+              Şehirden kırk dakika uzaklaşınca jeotermal havuzlar, kara
+              kumlu sahiller ve karanlık gökyüzü.
+            </p>
+            <button class="favourite-btn" type="button" aria-pressed="false" data-id="reykjavik">
+              <span class="favourite-btn__icon" aria-hidden="true">☆</span>
+              <span class="favourite-btn__label">Listeme ekle</span>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="section__more">
+        <a class="link-arrow" href="destinations.html">
+          Otuz altı destinasyonun tamamı
+          <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </section>
+
+    <!-- ============ NASIL ÇALIŞIR ============ -->
+    <section class="section section--alt" id="nasil-calisir" aria-labelledby="nasil-baslik">
+      <div class="section__head">
+        <h2 class="section__title" id="nasil-baslik">Üç adımda rota</h2>
+        <p class="section__lead">
+          Sırayla ilerliyor, çünkü her adım bir öncekinin sonucunu kullanıyor.
+        </p>
+      </div>
+
+      <ol class="route">
+        <li class="route__step">
+          <span class="route__num" aria-hidden="true">01</span>
+          <h3 class="route__title">Filtrele</h3>
+          <p class="route__text">
+            İklim, kıta ve bütçe aralığına göre listeyi daralt. Filtreler
+            birleşiyor, tek tek çalışmıyor.
+          </p>
+        </li>
+        <li class="route__step">
+          <span class="route__num" aria-hidden="true">02</span>
+          <h3 class="route__title">Kaydet</h3>
+          <p class="route__text">
+            Beğendiğin yerleri listene al. Tarayıcını kapatsan da liste
+            duruyor, hesap açmana gerek yok.
+          </p>
+        </li>
+        <li class="route__step">
+          <span class="route__num" aria-hidden="true">03</span>
+          <h3 class="route__title">Planlat</h3>
+          <p class="route__text">
+            Listeni tarihlerinle birlikte gönder, iki iş günü içinde
+            hazırlanmış bir taslak rota geri gelsin.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__brand">Traveler <em>Explorer</em></p>
+      <nav aria-label="Alt menü">
+        <ul class="site-footer__list">
+          <li><a href="index.html">Ana sayfa</a></li>
+          <li><a href="destinations.html">Destinasyonlar</a></li>
+          <li><a href="contact.html">Rota planla</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__note">
+        Bu site bir üniversite ödevi kapsamında öğrenme amaçlı hazırlanmıştır.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
