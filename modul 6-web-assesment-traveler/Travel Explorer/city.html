@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="City guide: top attractions filtered by category.">
+  <title>Travel Explorer – City</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">Travel Explorer</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <p class="js-fallback">This site needs JavaScript. If you opened the file directly, run it through a local web server (see README.md).</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="destinations.html">← All destinations</a>
+    </nav>
+
+    <section class="city-hero" id="city-hero">
+      <img id="city-image" src="" alt="">
+      <div class="city-hero-text">
+        <p class="eyebrow" id="city-region"></p>
+        <h1 id="city-name">Loading…</h1>
+        <p id="city-summary"></p>
+      </div>
+    </section>
+
+    <section class="filters" aria-labelledby="filters-heading" id="city-filters">
+      <h2 id="filters-heading" class="visually-hidden">Filter attractions</h2>
+      <form class="filter-bar" role="search">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="all">All categories</option>
+          <option value="historic">Historic</option>
+          <option value="landmark">Landmarks</option>
+          <option value="museum">Museums</option>
+          <option value="food">Food &amp; drink</option>
+          <option value="nature">Nature &amp; parks</option>
+        </select>
+      </form>
+    </section>
+
+    <section class="results" aria-labelledby="attractions-heading" id="city-results">
+      <h2 id="attractions-heading">Things to see and do</h2>
+      <p id="result-count" aria-live="polite"></p>
+      <div class="card-grid" id="attraction-grid"></div>
+    </section>
+
+    <section class="not-found" id="not-found" hidden>
+      <h1>City not found</h1>
+      <p>We couldn't find that destination. It may have been removed or the link is incorrect.</p>
+      <a href="destinations.html" class="btn">Back to destinations</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Travel Explorer</p>
+  </footer>
+</body>
+</html>
