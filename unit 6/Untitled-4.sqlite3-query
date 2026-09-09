@@ -1,0 +1,69 @@
+-- database: ./movie.db
+
+SELECT title,vote_average
+FROM movies
+WHERE vote_average>7
+ORDER BY vote_average DESC
+LIMIT 20;
+SELECT release_date,title 
+FROM movies
+WHERE release_date>2015
+ORDER BY release_date DESC;
+SELECT vote_count,popularity,title 
+FROM movies
+WHERE popularity>100 AND vote_count>5000
+ORDER BY vote_average DESC;
+SELECT title 
+FROM movies
+WHERE title LIKE "a%";
+SELECT title 
+FROM movies
+WHERE title LIKE "%civil%";
+
+SELECT movies.title , directors.name
+FROM directors
+INNER JOIN movies ON movies.director_id = directors.id;
+SELECT movies.title , directors.name
+FROM directors
+INNER JOIN movies ON movies.director_id = directors.id
+WHERE vote_average>8;
+SELECT movies.title , genres.genre
+FROM movies
+INNER JOIN movies_genres ON movies.id = movies_genres.movie_id
+INNER JOIN genres ON genres.genre_id = movies_genres.genre_id
+WHERE title ="Pulp Fiction";
+
+SELECT vote_average, COUNT (*)
+FROM movies 
+WHERE vote_average>8
+GROUP BY vote_average;
+SELECT directors.name ,COUNT(*) as movies_counts
+FROM movies
+INNER JOIN directors ON directors.id = movies.director_id
+GROUP BY director_id
+ORDER BY movies_counts DESC;
+
+SELECT directors.name ,COUNT(*) as movies_counts
+FROM movies
+INNER JOIN directors ON directors.id = movies.director_id
+WHERE vote_average>=8
+GROUP BY director_id
+ORDER BY movies_counts DESC;
+
+SELECT genres.genre , avg(movies.vote_average) as movies_vote_average
+FROM movies 
+INNER JOIN movies_genres ON movies.id=movies_genres.movie_id
+INNER JOIN genres ON genres.genre_id=movies_genres.genre_id
+GROUP BY genres.genre 
+ORDER BY movies_vote_average ASC;
+
+SELECT directors.name , COUNT(*) AS counter, AVG(movies.vote_average) AS directors_vote_average
+FROM movies
+INNER JOIN directors ON movies.director_id = directors.id
+GROUP BY directors.name
+HAVING counter>=3
+ORDER BY directors_vote_average DESC;
+
+
+
+
