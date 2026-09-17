@@ -1,0 +1,26 @@
+-- database: c:\Users\Lenovo\OneDrive\Desktop\ESSEX\MODUL 6\unit 6\movie.db
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM movies;
+
+SELECT title,vote_average
+FROM movies;
+
+SELECT title,vote_average
+FROM movies
+WHERE vote_average>7;
+SELECT title,vote_average
+FROM movies
+WHERE vote_average>7
+ORDER BY vote_average DESC;
+
+SELECT title,vote_average
+FROM movies
+WHERE vote_average>7
+ORDER BY vote_average DESC
+LIMIT 20;
+
+
+
+

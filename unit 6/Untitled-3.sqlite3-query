@@ -1,0 +1,7 @@
+-- database: c:\Users\Lenovo\OneDrive\Desktop\ESSEX\MODUL 6\unit 6\movie.db
+
+SELECT title,vote_average
+FROM movies
+WHERE vote_average>7
+ORDER BY vote_average DESC
+LIMIT 20;
