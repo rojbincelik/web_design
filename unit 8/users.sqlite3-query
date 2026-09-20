@@ -1,0 +1,26 @@
+-- database: ./user.db
+
+CREATE TABLE users(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+);
+
+
+
+INSERT INTO users(name,email, password) 
+VALUES ("rojbin" , "roj@karakoc.com" , "123roj"),
+       ("ren" , "ren@celik.com" , "yUkj"),
+       ("ogun" , "ogun@it.com" , "op987");
+
+
+SELECT * FROM users;
+
+
+UPDATE users SET password="rjb" WHERE id=1;
+
+
+DELETE FROM users WHERE id=2;
+
+
