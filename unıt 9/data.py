@@ -29,6 +29,24 @@ def get_todo():
     connection.close()
     return gtd
 
+def del_todo(id):
+    connection=sqlite3.connect(db)
+    connection.execute(f"DELETE FROM todos WHERE id={id}")
+    connection.commit()
+    connection.close()
+
+def add_user(user_name,password):
+    connection=sqlite3.connect(db)
+    connection.execute(f"INSERT INTO users (username,password) VALUES ('{user_name}','{password}')")
+    connection.commit()
+    connection.close()
+
+def check_user(user_name, password):
+    connection=sqlite3.connect(db)
+    gtd=connection.execute(f"SELECT username FROM users WHERE username='{user_name}' AND password='{password}'").fetchone() 
+    connection.close()
+    return gtd
+
 
 
 

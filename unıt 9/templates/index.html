@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
     <title>Document</title>
 </head>
 <body>
+    <header>
+        {%if user%}
+        <strong>{{user[0]}}</strong>
+        <a href="/logout">Logout</a>
+        {%else%}
+        <a href="/login">Login</a>
+        {%endif%}
+
+    </header>
+    <main>
    <form action="/add" method="post">
     <input type="text" name="roj" id="roj" placeholder="add to do"> 
     <button type="submit">add</button>
@@ -13,7 +24,12 @@
    <ol>
    {%for job in todos%}
    <li>{{job[1]}}</li>
+   <form action="/del/{{job[0]}}" method="post">
+    <button type="submit">delete</button>
+   </form>
    {%endfor%}
+
 </ol>
+</main>
 </body>
 </html>
